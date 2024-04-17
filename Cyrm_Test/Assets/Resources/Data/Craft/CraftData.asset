@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1668b058bb60cd409fd8ac363ad9649, type: 3}
+  m_Name: CraftData
+  m_EditorClassIdentifier: 
+  <Craft>k__BackingField:
+  - <Items>k__BackingField:
+    - {fileID: 11400000, guid: b2b32bea9869e3a4b811102bce3962ba, type: 2}
+    - {fileID: 11400000, guid: b583d75dabde7754e87c7fdb4b7e0e94, type: 2}
+    <EqualItem>k__BackingField: {fileID: 11400000, guid: 157a424111cf8d547b25842f59f023f5, type: 2}
+  - <Items>k__BackingField:
+    - {fileID: 11400000, guid: b2b32bea9869e3a4b811102bce3962ba, type: 2}
+    - {fileID: 11400000, guid: b55154cacee693943afaa20d99b5f527, type: 2}
+    <EqualItem>k__BackingField: {fileID: 11400000, guid: 0385f39bb754c7544b290df3feb6aa72, type: 2}
+  - <Items>k__BackingField:
+    - {fileID: 11400000, guid: b583d75dabde7754e87c7fdb4b7e0e94, type: 2}
+    - {fileID: 11400000, guid: b55154cacee693943afaa20d99b5f527, type: 2}
+    <EqualItem>k__BackingField: {fileID: 11400000, guid: 0b8c028439430fa499a37ffacd5ae041, type: 2}
