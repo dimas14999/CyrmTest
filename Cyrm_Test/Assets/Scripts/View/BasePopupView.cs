@@ -12,7 +12,6 @@ namespace View
         [SerializeField] protected Button _startButton;
         [SerializeField] protected TMP_Text _buttonText;
         [SerializeField] protected Image _fillImage;
-       // [SerializeField] protected FillProcess _fillProcess;
         [SerializeField] private Button _closeButton;
 
         public IFillProgressService FillProcess => _fillProgressService;

@@ -363,7 +363,6 @@ GameObject:
   - component: {fileID: 1345425187565032847}
   - component: {fileID: 5146038964542103403}
   - component: {fileID: 3240191556593139761}
-  - component: {fileID: 4229726416712676222}
   m_Layer: 5
   m_Name: ResourceBuildingContainer
   m_TagString: Untagged
@@ -444,21 +443,8 @@ MonoBehaviour:
   _startButton: {fileID: 3678267662015753905}
   _buttonText: {fileID: 8814398090135768560}
   _fillImage: {fileID: 8051719047875580171}
-  _fillProcess: {fileID: 4229726416712676222}
   _closeButton: {fileID: 1655465135100626572}
   _choiceItem: {fileID: 4654311159341454735}
---- !u!114 &4229726416712676222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6540507666214072988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa76c4072cc65224386a7308cf9e4b55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6850872414736792558
 GameObject:
   m_ObjectHideFlags: 0

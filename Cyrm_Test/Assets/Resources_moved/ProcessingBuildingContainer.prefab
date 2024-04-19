@@ -637,7 +637,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.009, y: 0}
+  m_AnchoredPosition: {x: -2.0089722, y: 0}
   m_SizeDelta: {x: -137.7847, y: -242.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2320230628308130710
@@ -2134,7 +2134,6 @@ GameObject:
   - component: {fileID: 4527387685288396522}
   - component: {fileID: 9174338214475344089}
   - component: {fileID: 670638069493670544}
-  - component: {fileID: 1223030200375557978}
   m_Layer: 5
   m_Name: ProcessingBuildingContainer
   m_TagString: Untagged
@@ -2227,22 +2226,9 @@ MonoBehaviour:
   _startButton: {fileID: 5541624781573517877}
   _buttonText: {fileID: 7099438464189403253}
   _fillImage: {fileID: 7478577113301789956}
-  _fillProcess: {fileID: 1223030200375557978}
   _closeButton: {fileID: 555886388015196025}
   _choiceResources:
   - {fileID: 5438403857353054232}
   - {fileID: 2751950574364316494}
   _equalsItemImage: {fileID: 4698816172615573097}
   _craftData: {fileID: 11400000, guid: a006176add40a98448ef26f447837840, type: 2}
---- !u!114 &1223030200375557978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9104084935341459408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa76c4072cc65224386a7308cf9e4b55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
