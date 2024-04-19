@@ -8,14 +8,16 @@ namespace Infrastructure.States
 {
     public class GameStateMachine: IGameStateMachine
     {
+        private readonly ICoroutineRunner _coroutineRunner;
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _activeState;
 
-        public GameStateMachine(SceneLoader sceneLoader, AllServices services)
+        public GameStateMachine(SceneLoader sceneLoader, AllServices services , ICoroutineRunner coroutineRunner)
         {
+            _coroutineRunner = coroutineRunner;
             _states = new Dictionary<Type, IExitableState>
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services, _coroutineRunner),
                 [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, services.Single<IGameFactory>(),services.Single<IUIFactory>(), services.Single<IStaticDataService>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPersistentProgressService>(), services.Single<ISaveLoadService>(), sceneLoader),
                 [typeof(MenuState)] = new MenuState(this, services.Single<IUIFactory>(), services.Single<IStaticDataService>()),

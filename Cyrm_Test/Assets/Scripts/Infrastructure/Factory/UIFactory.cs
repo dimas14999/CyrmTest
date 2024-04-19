@@ -13,11 +13,13 @@ namespace Infrastructure.Factory
     {
         private readonly IAssets _assets;
         private readonly IPersistentProgressService _persistentProgressService;
+        private readonly ICoroutineRunner _coroutineRunner;
         private Transform _uiRoot;
-        public UIFactory(IAssets assets, IPersistentProgressService persistentProgressService)
+        public UIFactory(IAssets assets, IPersistentProgressService persistentProgressService, ICoroutineRunner _coroutineRunner)
         {
             _assets = assets;
             _persistentProgressService = persistentProgressService;
+            this._coroutineRunner = _coroutineRunner;
         }
         
         public async Task CreateRootUI()
@@ -66,14 +68,17 @@ namespace Infrastructure.Factory
         {
             var processingBuilding = await _assets.InstantiateWithParent(AssetsAddressUI.ProcessingBuildingContainer, _uiRoot);
             var processingBuildingPopupView = processingBuilding.GetComponent<ProcessingBuildingPopupView>();
-            processingBuildingPopupView.Construct(_persistentProgressService.Progress.WorldModel);
+            processingBuildingPopupView.Construct(_coroutineRunner);
+            processingBuildingPopupView.Init(_persistentProgressService.Progress.WorldModel);
             return processingBuildingPopupView;
         }
 
         public async Task<BasePopupView> CreateResourceBuildingView()
         {
             var resourceBuilding = await _assets.InstantiateWithParent(AssetsAddressUI.ResourceBuildingContainer, _uiRoot);
-            return resourceBuilding.GetComponent<ResourceBuildingPopupView>();
+            var resourceBuildingPopupView = resourceBuilding.GetComponent<ResourceBuildingPopupView>();
+            resourceBuildingPopupView.Construct(_coroutineRunner);
+            return resourceBuildingPopupView;
         }
 
         public async Task<WinWindowView> CreateWinWindowView(GameStateMachine gameStateMachine, SceneLoader sceneLoader)

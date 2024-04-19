@@ -1,3 +1,5 @@
+using Infrastructure;
+using Infrastructure.Services;
 using Logic;
 using TMPro;
 using UnityEngine;
@@ -10,14 +12,22 @@ namespace View
         [SerializeField] protected Button _startButton;
         [SerializeField] protected TMP_Text _buttonText;
         [SerializeField] protected Image _fillImage;
-        [SerializeField] protected FillProcess _fillProcess;
+       // [SerializeField] protected FillProcess _fillProcess;
         [SerializeField] private Button _closeButton;
 
-        public FillProcess FillProcess => _fillProcess;
+        public IFillProgressService FillProcess => _fillProgressService;
 
+        protected IFillProgressService _fillProgressService;
+        private ICoroutineRunner _coroutineRunner;
+        public void Construct(ICoroutineRunner coroutineRunner)
+        {
+            _coroutineRunner = coroutineRunner;
+            _fillProgressService = new FillProgressService(_coroutineRunner);
+        }
+        
         protected virtual void Start()
         {
-            _fillProcess.Init(_fillImage, _startButton, _buttonText);
+            _fillProgressService.Init(_fillImage, _startButton, _buttonText);
         }
         
         protected virtual void OnEnable()
@@ -38,7 +48,7 @@ namespace View
         
         public void Hide()
         {
-            _fillProcess.CancelFill();
+           // _fillProgressService.CancelFill();
             gameObject.SetActive(false);
         }
 

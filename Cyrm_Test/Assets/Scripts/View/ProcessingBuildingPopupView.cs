@@ -15,7 +15,7 @@ namespace View
         private ItemData _itemData;
         private WorldModel _worldModel;
         
-        public void Construct(WorldModel worldModel)
+        public void Init(WorldModel worldModel)
         {
             _worldModel = worldModel;
             foreach (var choiceResource in _choiceResources)
@@ -31,7 +31,7 @@ namespace View
             {
                 choiceResource.OnSwitch += GetCurrentItem;
             }
-            _fillProcess.OnCompleteProcess += OnComplete;
+            _fillProgressService.OnCompleteProcess += OnComplete;
         }
 
         protected override void OnDisable()
@@ -41,13 +41,13 @@ namespace View
             {
                 choiceResource.OnSwitch -= GetCurrentItem;
             }
-            _fillProcess.OnCompleteProcess -= OnComplete;
+            _fillProgressService.OnCompleteProcess -= OnComplete;
         }
 
         protected override void StartProcessHandler()
         {
             if(_itemData != null && (_choiceResources[0].Resource.Amount > 0 && _choiceResources[1].Resource.Amount > 0))
-                _fillProcess.Process(_itemData);
+                _fillProgressService.Process(_itemData);
         }
         
         private void OnComplete(ItemData obj)
@@ -56,7 +56,7 @@ namespace View
                 DecreaseResource(choiceResource, 1);
 
             if (_choiceResources[0].Resource.Amount <= 0 || _choiceResources[1].Resource.Amount <= 0)
-                _fillProcess.CancelFill();
+                _fillProgressService.CancelFill();
         }
 
         private void DecreaseResource(ChoiceResource choiceResource, int amount)

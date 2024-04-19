@@ -13,12 +13,14 @@ namespace Infrastructure.States
       private readonly GameStateMachine _stateMachine;
       private readonly SceneLoader _sceneLoader;
       private readonly AllServices _services;
+      private readonly ICoroutineRunner _coroutineRunner;
 
-      public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services)
+      public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services, ICoroutineRunner coroutineRunner)
       {
         _stateMachine = stateMachine;
         _sceneLoader = sceneLoader;
         _services = services;
+        _coroutineRunner = coroutineRunner;
 
         RegisterServices();
       }
@@ -40,7 +42,7 @@ namespace Infrastructure.States
         RegisterAssetProvider();
         _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
         _services.RegisterSingle<IStaticDataService>(new StaticDataService());
-        _services.RegisterSingle<IUIFactory>(new UIFactory(_services.Single<IAssets>(), _services.Single<IPersistentProgressService>()));
+        _services.RegisterSingle<IUIFactory>(new UIFactory(_services.Single<IAssets>(), _services.Single<IPersistentProgressService>(), _coroutineRunner));
         _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssets>(),_services.Single<IPersistentProgressService>()));
         _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>()));
         _services.RegisterSingle<IWinService>(new WinService(_services.Single<IUIFactory>(), _services.Single<ISaveLoadService>(), _stateMachine,_sceneLoader));
